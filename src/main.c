@@ -34,31 +34,25 @@
 
 int main(void)
 {
-    /* Enable GPIOA clock */
-//    RCC->APB2ENR = 0x00000004;
-//
-//    /* GPIOA5 CNF: General Purpose Output push-pull  */
-//    GPIOA->CRL &= ~0x00C00000;
-//
-//    /* GPIOA5 MODE: Output mode, max speed 50 MHz */
-//    GPIOA->CRL |= 0x00300000;
-//
-//    /* Set GPIOA5 */
-//    GPIOA->BSRR = 0x00000020;
-
-    /* Reset GPIOA5 */
-    //GPIOA->BSRR = 0x00200000;  //or GPIOA->BRR = 0x00000020;
-
-	//RCC Init
-	aula_2_Init(HSE_PLL_MAX);
+	RCC_ConfigOptions Current_RCC_Option = L30MHZ;
+	int numberOfRuns = 0;
 	//GPIO Initializations
 	aula_1_Init();
+	//RCC Init
+	aula_2_Init(Current_RCC_Option);
 
     /* Infinite loop */
     for(;;)
     {
+    	numberOfRuns++;
     	//Toggle do LED
-    	aula_2_Action();
+		aula_2_Action();
+    	if(numberOfRuns == 10)
+    	{
+    		numberOfRuns = 0;
+    		Current_RCC_Option = (Current_RCC_Option == L30MHZ) ? HSI_PLL_MAX : L30MHZ;
+    		aula_2_Init(Current_RCC_Option);
+    	}
     }
     return 0;
 }
