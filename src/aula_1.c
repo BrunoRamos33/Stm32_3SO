@@ -1,5 +1,6 @@
 #include "stm32f10x_gpio.h"
 #define DELAY_DEFAULT	1000
+
 static void delay(uint32_t milliseconds)
 {
     // Calculate the number of loop iterations based on your clock frequency

@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/Aula_2.c \
 ../src/aula_1.c \
 ../src/lcd.c \
 ../src/main.c \
@@ -11,6 +12,7 @@ C_SRCS += \
 ../src/syscalls.c 
 
 OBJS += \
+./src/Aula_2.o \
 ./src/aula_1.o \
 ./src/lcd.o \
 ./src/main.o \
@@ -18,6 +20,7 @@ OBJS += \
 ./src/syscalls.o 
 
 C_DEPS += \
+./src/Aula_2.d \
 ./src/aula_1.d \
 ./src/lcd.d \
 ./src/main.d \

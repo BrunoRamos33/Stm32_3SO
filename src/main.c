@@ -10,7 +10,8 @@
 
 
 #include "stm32f10x.h"
-#include "aula_1.h"
+#include "aula_1.h""
+#include "aula_2.h"
 
 /* @PT
  * main.c: cofigura o GPIOA5 como saída e activa-a (ligando o LED da placa)
@@ -48,9 +49,11 @@ int main(void)
     /* Reset GPIOA5 */
     //GPIOA->BSRR = 0x00200000;  //or GPIOA->BRR = 0x00000020;
 
-
+	//RCC Init
+	aula_2_Init(HSE_PLL_MAX);
 	//GPIO Initializations
 	aula_1_Init();
+
     /* Infinite loop */
     for(;;)
     {
