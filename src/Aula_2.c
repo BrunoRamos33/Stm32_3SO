@@ -24,7 +24,7 @@ static void RCC_Config_HSI_Default(void)
 	RCC_HCLKConfig(RCC_SYSCLK_Div1);
 
 	//5-APB1 prescaler cfg - not in use
-	//RCC_PCLK1Config(RCC_HCLK_Div1);
+	RCC_PCLK1Config(RCC_HCLK_Div1);
 
 	//5-APB2 prescaler cfg
 	RCC_PCLK2Config(RCC_HCLK_Div1);
@@ -56,7 +56,7 @@ static void RCC_Config_HSI_PLL_Max(void)
 	RCC_HCLKConfig(RCC_SYSCLK_Div1);
 
 	//5-APB1 prescaler cfg - not in use
-	//RCC_PCLK1Config(RCC_HCLK_Div2);
+	RCC_PCLK1Config(RCC_HCLK_Div2);
 
 	//5-APB2 prescaler cfg
 	RCC_PCLK2Config(RCC_HCLK_Div1);
@@ -103,7 +103,7 @@ static void RCC_Config_HSE_Default(void)
 		RCC_HCLKConfig(RCC_SYSCLK_Div1);
 
 		//5-APB1 prescaler cfg - not in use
-		//RCC_PCLK1Config(RCC_HCLK_Div1);
+		RCC_PCLK1Config(RCC_HCLK_Div1);
 
 		//5-APB2 prescaler cfg
 		RCC_PCLK2Config(RCC_HCLK_Div1);
@@ -144,8 +144,8 @@ static void RCC_Config_HSE_PLL_Max(void)
 		//4-AHB prescaler cfg
 		RCC_HCLKConfig(RCC_SYSCLK_Div1);
 
-		//5-APB1 prescaler cfg - not in use
-		//RCC_PCLK1Config(RCC_HCLK_Div2);
+		//5-APB1 prescaler cfg
+		RCC_PCLK1Config(RCC_HCLK_Div2);
 
 		//5-APB2 prescaler cfg
 		RCC_PCLK2Config(RCC_HCLK_Div1);
@@ -196,7 +196,7 @@ static void RCC_Config_30MHz(void)
 		RCC_HCLKConfig(RCC_SYSCLK_Div2);
 
 		//5-APB1 prescaler cfg - not in use
-		//RCC_PCLK1Config(RCC_HCLK_Div2);
+		RCC_PCLK1Config(RCC_HCLK_Div2);
 
 		//5-APB2 prescaler cfg
 		RCC_PCLK2Config(RCC_HCLK_Div1);

@@ -10,8 +10,9 @@
 
 
 #include "stm32f10x.h"
-#include "aula_1.h""
+#include "aula_1.h"
 #include "aula_2.h"
+#include "aula_5.h"
 
 /* @PT
  * main.c: cofigura o GPIOA5 como saída e activa-a (ligando o LED da placa)
@@ -31,29 +32,50 @@
  *
  * */
 
-
 int main(void)
 {
-	RCC_ConfigOptions Current_RCC_Option = L30MHZ;
-	int numberOfRuns = 0;
-	//GPIO Initializations
-	aula_1_Init();
+	RCC_ConfigOptions Current_RCC_Option = HSE_PLL_MAX;
 	//RCC Init
 	aula_2_Init(Current_RCC_Option);
+	//GPIO Initializations - LED
+	aula_1_Init();
+	//GPIO Initializations - USART
+	aula_5_GPIO_Init();
+	//USART INIT
+	aula_5_USART_Init();
+	//Send message thought USART
+//	aula_5_Send_Hello();
 
     /* Infinite loop */
     for(;;)
     {
-    	numberOfRuns++;
-    	//Toggle do LED
-		aula_2_Action();
-    	if(numberOfRuns == 10)
-    	{
-    		numberOfRuns = 0;
-    		Current_RCC_Option = (Current_RCC_Option == L30MHZ) ? HSI_PLL_MAX : L30MHZ;
-    		aula_2_Init(Current_RCC_Option);
-    	}
+    	aula_1_Action();
+    	aula_5_Send_Hello();
     }
     return 0;
 }
+//int main(void)
+//{
+//	RCC_ConfigOptions Current_RCC_Option = L30MHZ;
+//	int numberOfRuns = 0;
+//	//GPIO Initializations
+//	aula_1_Init();
+//	//RCC Init
+//	aula_2_Init(Current_RCC_Option);
+//
+//    /* Infinite loop */
+//    for(;;)
+//    {
+//    	numberOfRuns++;
+//    	//Toggle do LED
+//		aula_1_Action();
+//    	if(numberOfRuns == 10)
+//    	{
+//    		numberOfRuns = 0;
+//    		Current_RCC_Option = (Current_RCC_Option == L30MHZ) ? HSI_PLL_MAX : L30MHZ;
+//    		aula_2_Init(Current_RCC_Option);
+//    	}
+//    }
+//    return 0;
+//}
 
