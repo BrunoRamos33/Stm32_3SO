@@ -28,7 +28,8 @@ src/main.o: ../src/main.c \
  /home/bruno-laptop/Projects/STM/WS/3S0/3SO/StdPeriph_Driver/inc/misc.h \
  /home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/aula_1.h \
  /home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/aula_2.h \
- /home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/aula_5.h
+ /home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/USART.h \
+ /home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/PC_Comm.h
 
 /home/bruno-laptop/Projects/STM/WS/3S0/3SO/CMSIS/device/stm32f10x.h:
 
@@ -88,4 +89,6 @@ src/main.o: ../src/main.c \
 
 /home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/aula_2.h:
 
-/home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/aula_5.h:
+/home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/USART.h:
+
+/home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc/PC_Comm.h:

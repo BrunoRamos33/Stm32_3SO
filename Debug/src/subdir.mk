@@ -5,8 +5,9 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Aula_2.c \
+../src/PC_Comm.c \
+../src/USART.c \
 ../src/aula_1.c \
-../src/aula_5.c \
 ../src/lcd.c \
 ../src/main.c \
 ../src/stm32f10x_it.c \
@@ -14,8 +15,9 @@ C_SRCS += \
 
 OBJS += \
 ./src/Aula_2.o \
+./src/PC_Comm.o \
+./src/USART.o \
 ./src/aula_1.o \
-./src/aula_5.o \
 ./src/lcd.o \
 ./src/main.o \
 ./src/stm32f10x_it.o \
@@ -23,8 +25,9 @@ OBJS += \
 
 C_DEPS += \
 ./src/Aula_2.d \
+./src/PC_Comm.d \
+./src/USART.d \
 ./src/aula_1.d \
-./src/aula_5.d \
 ./src/lcd.d \
 ./src/main.d \
 ./src/stm32f10x_it.d \

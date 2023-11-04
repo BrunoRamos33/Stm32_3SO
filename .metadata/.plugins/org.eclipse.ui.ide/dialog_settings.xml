@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/bruno-laptop/Projects/STM/WS/3S0"/>
 		<item value="/home/bruno-laptop/Projects/STM/WS/3SO_Fichas"/>
 		<item value="/home/bruno-laptop/Projects/STM/WS/3S0/3SO"/>
 	</list>
@@ -10,5 +11,9 @@
 		<item value="395" key="DIALOG_HEIGHT"/>
 		<item value="2634" key="DIALOG_X_ORIGIN"/>
 		<item value="290" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="BasicNewProjectResourceWizard">
 	</section>
 </section>
