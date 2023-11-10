@@ -400,3 +400,12 @@ arm-none-eabi-size "3SO.elf"
    text	   data	    bss	    dec	    hex	filename
    2044	   1088	   1092	   4224	   1080	3SO.elf
  
+23:51:07 **** Incremental Build of configuration Debug for project 3SO ****
+make all 
+make: Nothing to be done for 'all'.
+23:53:06 **** Incremental Build of configuration Debug for project 3SO ****
+make all 
+make: Nothing to be done for 'all'.
+23:55:44 **** Incremental Build of configuration Debug for project 3SO ****
+make all 
+make: Nothing to be done for 'all'.

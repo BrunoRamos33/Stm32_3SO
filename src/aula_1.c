@@ -37,7 +37,7 @@ void aula_1_Init(void)
 	return;
 }
 
-void aula_2_Action(void)
+void aula_1_Action(void)
 {
 	static uint32_t DelayInMiliseconds = DELAY_DEFAULT;//1 second delay
 	if (GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13))
