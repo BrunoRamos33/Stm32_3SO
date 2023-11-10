@@ -32,10 +32,10 @@ endif
 all: 3SO.elf
 
 # Tool invocations
-3SO.elf: $(OBJS) $(USER_OBJS) /home/bruno-laptop/Projects/STM/WS/3S0/3SO/LinkerScript.ld
+3SO.elf: $(OBJS) $(USER_OBJS) /home/bruno-laptop/Projects/STM/SandBox/Stm32_3SO_Int/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/home/bruno-laptop/Projects/STM/WS/3S0/3SO/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "3SO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/home/bruno-laptop/Projects/STM/SandBox/Stm32_3SO_Int/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "3SO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

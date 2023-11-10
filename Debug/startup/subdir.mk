@@ -15,7 +15,7 @@ startup/%.o: ../startup/%.s
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU GCC Assembler'
 	@echo $(PWD)
-	arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -I"/home/bruno-laptop/Projects/STM/WS/3S0/3SO/inc" -I"/home/bruno-laptop/Projects/STM/WS/3S0/3SO/StdPeriph_Driver/inc" -I"/home/bruno-laptop/Projects/STM/WS/3S0/3SO/CMSIS/core" -I"/home/bruno-laptop/Projects/STM/WS/3S0/3SO/CMSIS/device" -g -o "$@" "$<"
+	arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -I"/home/bruno-laptop/Projects/STM/SandBox/Stm32_3SO_Int/inc" -I"/home/bruno-laptop/Projects/STM/SandBox/Stm32_3SO_Int/StdPeriph_Driver/inc" -I"/home/bruno-laptop/Projects/STM/SandBox/Stm32_3SO_Int/CMSIS/core" -I"/home/bruno-laptop/Projects/STM/SandBox/Stm32_3SO_Int/CMSIS/device" -g -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
