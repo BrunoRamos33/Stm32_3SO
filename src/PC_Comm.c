@@ -1,4 +1,20 @@
 #include "USART.h"
+#include <stdio.h>
+#include "time_measurement.h"
+
+static void delay(uint32_t microseconds)
+{
+    // Calculate the number of loop iterations based on your clock frequency
+    // For example, if your clock frequency is 72 MHz, you can use 72 loops to create a 1 ms delay.
+    // Adjust this value based on your specific microcontroller and clock speed.
+    uint32_t loop_count = microseconds * 72;
+    // Dummy loop for the delay
+    for (uint32_t i = 0; i < loop_count; i++) {
+        // This loop will take time, and it can be used to create a delay
+        // The actual time delay depends on your microcontroller's clock frequency
+    }
+    return;
+}
 
 void responder(char s[], char c)
 {
@@ -40,7 +56,17 @@ void responder(char s[], char c)
 
 void Comm1(char s[])
 {
-	responder(s,s[4]);
+	char str[6];
+	uint16_t time_in_ms = 0x00;
+	time_measurement_start_measurement();
+	//delay
+	delay(1);
+	time_in_ms = time_measurement_get_time();
+	sprintf(str,"%d",time_in_ms);
+	USART_2_sendString("\rTimeMeasurement POC = ");
+	USART_2_sendString(str);
+	USART_2_sendString("us");
+	USART_2_sendChar('\r');
 }
 
 void Comm2(char s[])
