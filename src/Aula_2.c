@@ -246,13 +246,12 @@ void aula_2_Init(RCC_ConfigOptions RCC_ConfigOption)
 			break;
 		}
 		case HSE_PLL_MAX:
-		{
+		{	//Core at 72MHz
 			RCC_Config_HSE_PLL_Max();
 			break;
 		}
 		case L30MHZ:
 		{
-			//Falta o ponto 6
 			RCC_Config_30MHz();
 			break;
 		}
