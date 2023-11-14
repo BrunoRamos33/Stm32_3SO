@@ -52,6 +52,9 @@ int main(void)
 	//USART INIT
 	USART_2_Init();
 
+	//Time measurement init
+	time_measurement_init();
+
 	//say hello
 	USART_2_sendString("\rPC_Comm.c ready to communicate.\r");
   

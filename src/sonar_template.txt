@@ -1,0 +1,44 @@
+import RPi.GPIO as GPIO
+import time
+
+# Set GPIO mode and pins
+GPIO.setmode(GPIO.BOARD)
+trigger_pin = 11  # GPIO pin for the trigger
+echo_pin = 13     # GPIO pin for the echo
+
+GPIO.setup(trigger_pin, GPIO.OUT)
+GPIO.setup(echo_pin, GPIO.IN)
+
+def get_distance():
+    # Trigger the sonar sensor
+    GPIO.output(trigger_pin, GPIO.HIGH)
+    time.sleep(0.00001)
+    GPIO.output(trigger_pin, GPIO.LOW)
+
+    # Wait for the echo pin to go high
+    pulse_start = time.time()
+    while GPIO.input(echo_pin) == 0:
+        pulse_start = time.time()
+
+    # Wait for the echo pin to go low
+    pulse_end = time.time()
+    while GPIO.input(echo_pin) == 1:
+        pulse_end = time.time()
+
+    # Calculate the time difference
+    pulse_duration = pulse_end - pulse_start
+
+    # Speed of sound is 343 m/s, so distance = time * speed / 2
+    distance = (pulse_duration * 34300) / 2
+
+    return distance
+
+try:
+    while True:
+        distance = get_distance()
+        print(f"Distance: {distance:.2f} cm")
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("Measurement stopped by user")
+    GPIO.cleanup()
