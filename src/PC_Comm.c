@@ -1,6 +1,7 @@
 #include "USART.h"
 #include <stdio.h>
 #include "time_measurement.h"
+#include "HC_SR04.h"
 
 static void delay(uint32_t microseconds)
 {
@@ -57,12 +58,12 @@ void responder(char s[], char c)
 void Comm1(char s[])
 {
 	char str[6];
-	uint16_t time_in_ms = 0x00;
+	uint16_t time_in_us = 0x00;
 	time_measurement_start_measurement();
 	//delay
 	delay(1);
-	time_in_ms = time_measurement_get_time();
-	sprintf(str,"%d",time_in_ms);
+	time_in_us = time_measurement_get_time();
+	sprintf(str,"%d",time_in_us);
 	USART_2_sendString("\rTimeMeasurement POC = ");
 	USART_2_sendString(str);
 	USART_2_sendString("us");
@@ -71,7 +72,14 @@ void Comm1(char s[])
 
 void Comm2(char s[])
 {
-	responder(s,s[4]);
+	char str[10];
+	uint32_t distance_in_mm = 0x00;
+	distance_in_mm = HC_SR04_Get_Distance();
+	sprintf(str,"%d",distance_in_mm);
+	USART_2_sendString("\rDistance = ");
+	USART_2_sendString(str);
+	USART_2_sendString("mm");
+	USART_2_sendChar('\r');
 }
 
 void Comm3(char s[])

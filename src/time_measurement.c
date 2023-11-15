@@ -1,5 +1,6 @@
 
 #include "stm32f10x_tim.h"
+#include "time_measurement.h"
 
 void time_measurement_init(void)
 {

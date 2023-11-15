@@ -43,9 +43,6 @@ int main(void)
 	//RCC Init
 	aula_2_Init(Current_RCC_Option);
 
-	//GPIO Initializations - LED
-	aula_1_Init();
-
 	//GPIO Initializations - USART
 	USART_2_GPIO_Init();
 
@@ -54,6 +51,9 @@ int main(void)
 
 	//Time measurement init
 	time_measurement_init();
+
+	//HC_SR04 init
+	HC_SR04_Init();
 
 	//say hello
 	USART_2_sendString("\rPC_Comm.c ready to communicate.\r");
