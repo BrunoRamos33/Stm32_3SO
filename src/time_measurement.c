@@ -11,14 +11,14 @@ void time_measurement_init(void)
 	//info: sistr3 page 14
 	//TIM struct CFG variable
 	//T=((PSC+1)/CK_INT)*(ARR+1)
-	//CK_INT = TIM3 Clock Freq. = 72MHz because it belongs to APB1
+	//CK_INT = TIM3 Clock Freq. = 36MHz because it belongs to APB1
 	//neads to handle values between 150 µs(min) to 38 ms(sensor time out)
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 
 	//TIM 3 CFG
-	TIM_TimeBaseStructure.TIM_Period = 39000;
+	TIM_TimeBaseStructure.TIM_Period = 38999; //38999dec
 	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-	TIM_TimeBaseStructure.TIM_Prescaler = 1000;
+	TIM_TimeBaseStructure.TIM_Prescaler = 71; //35dec
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 
 	//TIM3 Init

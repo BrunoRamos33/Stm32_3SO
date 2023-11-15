@@ -9,7 +9,7 @@ static void delay(uint32_t microseconds)
     // For example, if your clock frequency is 72 MHz, you can use 72 loops to create a 1 us delay.
     // Adjust this value based on your specific microcontroller and clock speed.
     uint32_t loop_count = microseconds * 72;
-    // Dummy loop for the delay
+        // Dummy loop for the delay
     for (uint32_t i = 0; i < loop_count; i++) {
         // This loop will take time, and it can be used to create a delay
         // The actual time delay depends on your microcontroller's clock frequency
@@ -41,13 +41,13 @@ void HC_SR04_Init(void)
 
 uint32_t HC_SR04_Get_Distance(void)
 {
-	uint32_t DelayInMicroseconds = 0x10;
+	uint32_t DelayInMicroseconds = 0x1;
 	uint32_t rtn_value = 0x00;
 	uint16_t time_elaped = 0x00;
 
-	GPIO_SetBits( GPIOA, GPIO_Pin_0);
+	GPIOA->BSRR = GPIO_Pin_0;
 	delay(DelayInMicroseconds);
-	GPIO_ResetBits( GPIOA, GPIO_Pin_0);
+	GPIOA->BRR = GPIO_Pin_0;
 
 	//Wait for the echo pin to go high
 	while(!GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1));
@@ -59,8 +59,8 @@ uint32_t HC_SR04_Get_Distance(void)
 	//get time elapsed
 	time_elaped = time_measurement_get_time();
 
-	//Speed of sound is 343 m/s, so distance = time * speed / 2
+	//Speed of sound is 343 m/s, 58us/cm ,so distance = time * speed / 2
 	//discance in cm
-	rtn_value = (time_elaped * 3430)/2000;
+	rtn_value = (uint32_t)((uint32_t)time_elaped / (58UL));
 	return rtn_value;
 }

@@ -78,7 +78,7 @@ void Comm2(char s[])
 	sprintf(str,"%d",distance_in_mm);
 	USART_2_sendString("\rDistance = ");
 	USART_2_sendString(str);
-	USART_2_sendString("mm");
+	USART_2_sendString("cm");
 	USART_2_sendChar('\r');
 }
 
