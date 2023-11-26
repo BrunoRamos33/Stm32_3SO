@@ -31,7 +31,7 @@ void time_measurement_start_measurement(void)
 {
 	//Enable TIM3
 	TIM_Cmd(TIM3, ENABLE);
-
+	return;
 }
 
 uint16_t time_measurement_get_time(void)

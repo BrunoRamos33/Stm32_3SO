@@ -84,7 +84,7 @@ void Comm2(char s[])
 
 void Comm3(char s[])
 {
-	responder(s,s[4]);
+	MotorControl_SetCompare(0x7fff);
 }
 
 void Comm4(char s[])

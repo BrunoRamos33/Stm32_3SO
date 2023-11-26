@@ -55,6 +55,10 @@ int main(void)
 	//HC_SR04 init
 	HC_SR04_Init();
 
+	//Motor Init
+	MotorControl_Init();
+	MotorControl_Enable();
+
 	//say hello
 	USART_2_sendString("\rPC_Comm.c ready to communicate.\r");
   
