@@ -4,7 +4,6 @@
 
 void time_measurement_init(void)
 {
-
 	//Enable TIM3 Clock
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 
