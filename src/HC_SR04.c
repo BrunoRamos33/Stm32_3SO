@@ -24,12 +24,12 @@ void HC_SR04_Init(void)
 
 	GPIO_InitTypeDef GPIO_InitStructure_Trigger;
 	GPIO_InitTypeDef GPIO_InitStructure_Echo;
-	//GPIO cfg for TX
-	GPIO_InitStructure_Trigger.GPIO_Pin = GPIO_Pin_0;
+	//GPIO cfg - Trigger
+	GPIO_InitStructure_Trigger.GPIO_Pin = GPIO_Pin_8;
 	GPIO_InitStructure_Trigger.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure_Trigger.GPIO_Mode = GPIO_Mode_Out_PP;
-	//GPIO cfg for Bottom
-	GPIO_InitStructure_Echo.GPIO_Pin = GPIO_Pin_1;
+	//GPIO cfg - echo
+	GPIO_InitStructure_Echo.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStructure_Echo.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure_Echo.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 
@@ -45,17 +45,17 @@ uint32_t HC_SR04_Get_Distance(void)
 	uint32_t rtn_value = 0x00;
 	uint16_t time_elaped = 0x00;
 
-	GPIOA->BSRR = GPIO_Pin_0;
+	GPIOA->BSRR = GPIO_Pin_8;
 	delay(DelayInMicroseconds);
-	GPIOA->BRR = GPIO_Pin_0;
+	GPIOA->BRR = GPIO_Pin_8;
 
 	//Wait for the echo pin to go high
-	while(!GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1));
+	while(!GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9));
 	//start Timer
 	time_measurement_start_measurement();
 
 	//wait for echo pin to go low
-	while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1));
+	while(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9));
 	//get time elapsed
 	time_elaped = time_measurement_get_time();
 
