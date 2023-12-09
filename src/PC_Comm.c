@@ -90,7 +90,7 @@ void Comm3(char s[])
 	uint16_t PWM_Percentage = 55U;
 	char PWM_Value_str[10];
 	//Convert 100% to raw data [0,65535]
-	//PWM_Percentage = (uint16_t)atoi(s[5]);
+	PWM_Percentage = (uint16_t)atoi(&s[5]);
 	PWM_Value = (uint16_t)(PWM_Percentage*10U);
 	//Set PWM
 	MotorControl_SetCompare(PWM_Value);
