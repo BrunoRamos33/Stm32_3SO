@@ -17,7 +17,7 @@ void time_measurement_init(void)
 	//TIM 3 CFG
 	TIM_TimeBaseStructure.TIM_Period = 38999; //38999dec
 	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-	TIM_TimeBaseStructure.TIM_Prescaler = 71; //35dec
+	TIM_TimeBaseStructure.TIM_Prescaler = 71; //71dec
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 
 	//TIM3 Init

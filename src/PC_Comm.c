@@ -1,5 +1,7 @@
 #include "USART.h"
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "time_measurement.h"
 #include "HC_SR04.h"
 
@@ -84,7 +86,20 @@ void Comm2(char s[])
 
 void Comm3(char s[])
 {
-	MotorControl_SetCompare(0x7fff);
+	uint16_t PWM_Value = 550; //55% - debug
+	uint16_t PWM_Percentage = 55U;
+	char PWM_Value_str[10];
+	//Convert 100% to raw data [0,65535]
+	//PWM_Percentage = (uint16_t)atoi(s[5]);
+	PWM_Value = (uint16_t)(PWM_Percentage*10U);
+	//Set PWM
+	MotorControl_SetCompare(PWM_Value);
+	//report
+	sprintf(PWM_Value_str, "%d",PWM_Percentage);
+	USART_2_sendString("\rSet Motor PWM: ");
+	USART_2_sendString(PWM_Value_str);
+	USART_2_sendString("\r");
+
 }
 
 void Comm4(char s[])
@@ -116,7 +131,7 @@ void PC_Comm_parseInput(char s[])
 						break;
 					default:
 						USART_2_sendString("\rYou sent: '");
-						USART_2_sendChar(s[0]);
+						USART_2_sendChar(s[4]);
 						USART_2_sendString("' - I don't understand.\r");
 				}
 			break;
