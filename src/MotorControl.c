@@ -33,7 +33,7 @@ static PWM_Timers_init(void)
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 
 	//TIM 2 CFG
-	TIM_TimeBaseStructure.TIM_Period = 1000; //1000dec
+	TIM_TimeBaseStructure.TIM_Period = 20000; //50HZ = 20ms
 	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseStructure.TIM_Prescaler = 71; //71dec
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
@@ -53,7 +53,7 @@ static PWM_Output_init(void)
 	//TIM 2 CFG
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_Pulse = 250; //PWM75%
+	TIM_OCInitStructure.TIM_Pulse = 1500; //PWM slop of 1.5ms (SG90 center)
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
 	//TIM2 Init
@@ -96,3 +96,15 @@ void MotorControl_SetCompare(uint16_t f_compare_reg_value)
 
 	return;
 }
+
+void MotorControl_SetLeft()
+{
+	TIM_SetCompare1(TIM2, (uint16_t)2000U);//45º
+	return;
+}
+void MotorControl_SetRight()
+{
+	TIM_SetCompare1(TIM2, (uint16_t)1000U);//45º
+	return;
+}
+

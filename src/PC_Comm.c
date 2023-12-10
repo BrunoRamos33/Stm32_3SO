@@ -86,20 +86,30 @@ void Comm2(char s[])
 
 void Comm3(char s[])
 {
-	uint16_t PWM_Value = 550; //55% - debug
-	uint16_t PWM_Percentage = 55U;
-	char PWM_Value_str[10];
-	//Convert 100% to raw data [0,65535]
-	PWM_Percentage = (uint16_t)atoi(&s[5]);
-	PWM_Value = (uint16_t)(PWM_Percentage*10U);
-	//Set PWM
-	MotorControl_SetCompare(PWM_Value);
-	//report
-	sprintf(PWM_Value_str, "%d",PWM_Percentage);
-	USART_2_sendString("\rSet Motor PWM: ");
-	USART_2_sendString(PWM_Value_str);
-	USART_2_sendString("\r");
-
+	if((s[5] == 'l') || (s[5] == 'L'))
+	{
+		MotorControl_SetLeft();
+		USART_2_sendString("\rSet Motor Left");
+	}
+	else if(s[5] == 'r' || s[5] == 'R')
+	{
+		MotorControl_SetRight();
+		USART_2_sendString("\rSet Motor Right");
+	}
+	else
+	{
+		//for debug
+		uint16_t PWM_Value = 550; //55% - debug
+		char PWM_Value_str[10];
+		PWM_Value = (uint16_t)atoi(&s[5]);
+		//Set PWM
+		MotorControl_SetCompare(PWM_Value);
+		//report
+		sprintf(PWM_Value_str, "%d",PWM_Value);
+		USART_2_sendString("\rSet Motor (500-2500): ");
+		USART_2_sendString(PWM_Value_str);
+		USART_2_sendString("\r");
+	}
 }
 
 void Comm4(char s[])
